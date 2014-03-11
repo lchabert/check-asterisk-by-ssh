@@ -8,3 +8,12 @@ Use asterisk -rx '<command>' to make checks.
 check-asterisk-peers
 =======================
 check_asterisk-peers.py -H localhost -p 22 -u shinken -w 20 -c 30
+
+check-asterisk-channerls
+=======================
+check_asterisk-channels.py -H localhost -p 22 -u shinken -w 20 -c 30 -W 20 -C 30
+
+-w : warning calls trigger
+-c : critical calls trigger
+-W : warning channels trigger
+-C : critical channels trigger
