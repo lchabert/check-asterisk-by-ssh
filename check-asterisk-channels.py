@@ -53,19 +53,18 @@ def get_channels(client):
     # We are looking for a line like
     #0.19 0.17 0.15 1/616 3634 4
     # l1 l5 l15 _ _ nb_cpus
-    raw = r"""asterisk -rx 'core show channels' | grep 'active calls'"""
+    raw = r"""asterisk -rx 'core show channels' | grep 'active call'"""
     stdin, stdout, stderr = client.exec_command(raw)
     line = [l for l in stdout][0].strip()
     
     data = line.split(" ")
     active_calls = int(data[0])
 
-    raw = r"""asterisk -rx 'core show channels' | grep 'active channels'"""
+    raw = r"""asterisk -rx 'core show channels' | grep 'active channel'"""
     stdin, stdout, stderr = client.exec_command(raw)
     line = [l for l in stdout][0].strip()
     data = line.split(" ")
     active_channels = int(data[0])
-
     client.close()
     return active_channels,active_calls
 
