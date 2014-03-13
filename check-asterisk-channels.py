@@ -135,8 +135,8 @@ if __name__ == '__main__':
         status = 4
 
     perfdata = ''
-    perfdata += ' active_channels=%d;;' % (active_channels)
-    perfdata += ' active_calls=%d;;' % (active_calls)
+    perfdata += ' active_channels=%d;%d;%d;;' % (active_channels,s_warning_channels,s_critical_channels)
+    perfdata += ' active_calls=%d;%d;%d;;' % (active_calls,s_warning_calls,s_critical_calls)
 
     if status == 1:
         print "Warning: number of channels is very high %s | %s" % (active_channels, perfdata)

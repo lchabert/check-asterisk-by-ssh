@@ -122,7 +122,7 @@ if __name__ == '__main__':
         status = 2
 
     perfdata = ''
-    perfdata += ' sip_peers=%d;;' % (sip_peers)
+    perfdata += ' sip_peers=%d;%d;%d;;' % (sip_peers,s_warning,s_critical)
     perfdata += ' monitored_online=%d;;' % (monitored_online)
     perfdata += ' monitored_offline=%d;;' % (monitored_offline)
     perfdata += ' unmonitored_online=%d;;' % (unmonitored_online)
