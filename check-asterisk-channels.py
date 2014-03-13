@@ -111,13 +111,21 @@ if __name__ == '__main__':
         print "Error : port parameter (-p) must be an integer"
 
     # Try to get numeic warning/critical values
+    s_warning_calls =  s_warning_channels = DEFAULT_WARNING
+    s_critical_calls = s_critical_channels = DEFAULT_CRITICAL
+    
     try:
-        s_warning_calls = int(opts.warning_calls) or DEFAULT_WARNING
-        s_critical_calls = int(opts.critical_calls) or DEFAULT_CRITICAL
-        s_warning_channels = int(opts.warning_channels) or DEFAULT_WARNING
-        s_critical_channels = int(opts.critical_channels) or DEFAULT_CRITICAL
+        if opts.warning_calls: 
+            s_warning_calls = int(opts.warning_calls)
+        if opts.critical_calls:
+            s_critical_calls = int(opts.warning_calls)
+        if opts.warning_channels: 
+            s_warning_channels = int(opts.warning_channels)
+        if opts.critical_channels:
+            s_critical_channels = int(opts.critical_channels)
     except:
         print "Error : warning and critical parameters (-c,-w) must be an integer"
+        sys.exit(3)
 
     client = schecks.connect(hostname, ssh_key_file, passphrase, user, port)
     active_channels, active_calls = get_channels(client)
